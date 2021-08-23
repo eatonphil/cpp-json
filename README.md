@@ -31,3 +31,16 @@ Failed to parse at line 5, column 18
   "servlet-class": ,"org.cofax.cds.CDSServlet",
                    ^
 ```
+
+### API
+
+Just two main functions.
+
+#### std::tuple<json::JSONValue, std::string> parse(std::string)
+
+This turns a string into a `json::JSONValue`. If it fails, the third
+element in the return tuple contains an error string.
+
+#### std::string deparse(json::JSONValue)
+
+This turns a `json::JSONValue` back into a JSON string.

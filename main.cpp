@@ -10,15 +10,9 @@ int main(int argc, char *argv[]) {
 
   std::string in{argv[1]};
 
-  auto [tokens, error] = json::lex(in);
+  auto [ast, error] = json::parse(in);
   if (error.size()) {
     std::cerr << error << std::endl;
-    return 1;
-  }
-
-  auto [ast, _, error1] = json::parse(tokens);
-  if (error1.size()) {
-    std::cerr << error1 << std::endl;
     return 1;
   }
 

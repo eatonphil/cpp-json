@@ -350,6 +350,16 @@ std::tuple<JSONValue, int, std::string> parse(std::vector<JSONToken> tokens,
   return {{}, index, format_parse_error("Failed to parse", token)};
 }
 
+std::tuple<JSONValue, std::string> parse(std::string source) {
+  auto [tokens, error] = json::lex(source);
+  if (error.size()) {
+    return {{}, error};
+  }
+
+  auto [ast, _, error1] = json::parse(tokens);
+  return {ast, error1};
+}
+
 std::string deparse(JSONValue v, std::string whitespace) {
   switch (v.type) {
   case JSONValueType::String:

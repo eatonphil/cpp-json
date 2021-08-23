@@ -28,6 +28,7 @@ struct JSONToken {
 std::tuple<std::vector<JSONToken>, std::string> lex(std::string);
 std::tuple<JSONValue, int, std::string> parse(std::vector<JSONToken>,
                                               int index = 0);
+std::tuple<JSONValue, std::string> parse(std::string);
 std::string deparse(JSONValue, std::string whitespace = "");
 } // namespace json
 
