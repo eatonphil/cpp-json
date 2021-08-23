@@ -5,18 +5,18 @@
 #include <sstream>
 
 namespace json {
-std::ostream &operator<<(std::ostream &os, JSONTokenType jtt) {
+std::string JSONTokenType_to_string(JSONTokenType jtt) {
   switch (jtt) {
   case JSONTokenType::String:
-    return os << "String";
+    return "String";
   case JSONTokenType::Number:
-    return os << "Number";
+    return "Number";
   case JSONTokenType::Syntax:
-    return os << "Syntax";
+    return "Syntax";
   case JSONTokenType::Boolean:
-    return os << "Boolean";
+    return "Boolean";
   case JSONTokenType::Null:
-    return os << "Null";
+    return "Null";
   }
 }
 
@@ -215,8 +215,8 @@ std::tuple<std::vector<JSONToken>, std::string> lex(std::string raw_json) {
 
 std::string format_parse_error(std::string base, JSONToken token) {
   std::ostringstream s;
-  s << "Unexpected token '" << token.value << "', type '" << token.type
-    << "', index ";
+  s << "Unexpected token '" << token.value << "', type '"
+    << JSONTokenType_to_string(token.type) << "', index ";
   s << std::endl << base;
   return format_error(s.str(), *token.full_source, token.location);
 }
