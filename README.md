@@ -38,7 +38,7 @@ Just two main functions.
 
 #### std::tuple<json::JSONValue, std::string> parse(std::string)
 
-This turns a string into a `json::JSONValue`. If it fails, the third
+This turns a string into a `json::JSONValue`. If it fails, the second
 element in the return tuple contains an error string.
 
 #### std::string deparse(json::JSONValue)
